@@ -1,0 +1,63 @@
+{
+    "resourceSpecId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "stableId": "inspector-config",
+    "displayName": "Amazon Inspector Configuration",
+    "resourceType": "security.inspector",
+    "vpcDependency": "none",
+    "status": "draft",
+    "inputs": {
+        "enabled": true,
+        "resource_types": ["EC2", "ECR", "LAMBDA", "LAMBDA_CODE"],
+        "auto_enable": {
+            "ec2": true,
+            "ecr": true,
+            "lambda": true,
+            "lambda_code": true
+        },
+        "ecr_configuration": {
+            "rescan_duration": "LIFETIME",
+            "pull_date_rescan_duration": "DAYS_180"
+        },
+        "lambda_configuration": {
+            "code_scanning": true
+        },
+        "filter_criteria": {
+            "suppression_rules": [
+                {
+                    "name": "Suppress low severity in dev",
+                    "description": "Suppress low severity findings in development environment",
+                    "filter_criteria": {
+                        "severity": [{ "comparison": "EQUALS", "value": "LOW" }],
+                        "resource_tags": [
+                            { "comparison": "EQUALS", "key": "Environment", "value": "development" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "kms_key_arn": { "ref": "kms-key.arn" },
+        "tags": {
+            "Environment": "production",
+            "Project": "sigmoid",
+            "SecurityTool": "inspector"
+        }
+    },
+    "inputSpecs": [
+        { "name": "enabled", "type": "boolean", "required": true, "default": true },
+        { "name": "resource_types", "type": "array", "required": false, "default": ["EC2", "ECR", "LAMBDA", "LAMBDA_CODE"] },
+        { "name": "auto_enable", "type": "object", "required": false },
+        { "name": "ecr_configuration", "type": "object", "required": false },
+        { "name": "lambda_configuration", "type": "object", "required": false },
+        { "name": "member_accounts", "type": "array", "required": false },
+        { "name": "delegated_admin_account_id", "type": "string", "required": false },
+        { "name": "filter_criteria", "type": "object", "required": false },
+        { "name": "kms_key_arn", "type": "string", "required": false },
+        { "name": "tags", "type": "object", "required": false }
+    ],
+    "position": { "x": 800, "y": 50 },
+    "terraform": {
+        "module": {
+            "source": "../../terraform-modules/terraform-aws-inspector"
+        }
+    }
+}

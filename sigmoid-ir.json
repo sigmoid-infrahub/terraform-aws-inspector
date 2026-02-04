@@ -2,6 +2,8 @@
     "resourceSpecId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
     "stableId": "inspector-config",
     "displayName": "Amazon Inspector Configuration",
+    "category": "security",
+    "iconUrl": "https://cdn.sigmoid.us/icons/aws/full-size/svg/security/inspector.svg",
     "resourceType": "security.inspector",
     "vpcDependency": "none",
     "status": "draft",

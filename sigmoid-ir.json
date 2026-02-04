@@ -59,7 +59,8 @@
     "position": { "x": 800, "y": 50 },
     "terraform": {
         "module": {
-            "source": "../../terraform-modules/terraform-aws-inspector"
+            "source": "github.com/sigmoid-hq/terraform-aws-inspector",
+            "ref": "main"
         }
     }
 }

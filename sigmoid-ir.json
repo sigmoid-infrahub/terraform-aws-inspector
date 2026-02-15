@@ -13,5 +13,11 @@
             "source": "github.com/sigmoid-hq/terraform-aws-inspector",
             "ref": "main"
         }
+    },
+    "easy": {
+        "hidden": true,
+        "alias": "Vulnerability Scan",
+        "group": "security-scan",
+        "priority": 20
     }
 }

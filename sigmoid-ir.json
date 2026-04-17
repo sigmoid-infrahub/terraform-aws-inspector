@@ -1,0 +1,23 @@
+{
+    "resourceSpecId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "stableId": "inspector-config",
+    "displayName": "Amazon Inspector Configuration",
+    "category": "security",
+    "iconUrl": "https://cdn.sigmoid.us/icons/aws/full-size/svg/security/inspector.svg",
+    "resourceType": "security.inspector",
+    "vpcDependency": "none",
+    "status": "draft",
+    "position": { "x": 800, "y": 50 },
+    "terraform": {
+        "module": {
+            "source": "github.com/sigmoid-hq/terraform-aws-inspector",
+            "ref": "main"
+        }
+    },
+    "easy": {
+        "hidden": true,
+        "alias": "Vulnerability Scan",
+        "group": "security-scan",
+        "priority": 20
+    }
+}
